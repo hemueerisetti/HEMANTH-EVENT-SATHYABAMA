@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from 'axios';
+import './login-sathyabama.css';
+import { Link } from "react-router-dom";
 
-
-import './login-sathyabama.css'
-
-const Login_sathyabama = ()=>{
-    const [username, setUsername] = useState('');
+const Login_sathyabama = () => {
+    const [regNo, setregNo] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [email, setEmail] = useState(null);
@@ -13,39 +12,36 @@ const Login_sathyabama = ()=>{
     const LoginFunction = async (e) => {
         e.preventDefault();
 
-        try{
-            const response = await axios.post('http://localhost:8081/api/login', {
-                username,
-                password
+        try {
+            const response = await axios.post('http://databsae1.us-e2.cloudhub.io/api/post', {
+                regNo: regNo,
+                password: password
+
             });
             console.log(response.data);
-        }
-        catch(error) {
+        } catch(error) {
             console.error('Error:', error.response.data);
         }
     }
 
-    return(
-        <form method="post" >
-            <div class="login-page">
-        <div class="form"> 
-            <div class="login">
-            <div class="login-header">
-                <h3>LOGIN</h3>
-                <p>Please enter your credentials to login.</p>
+    return (
+        <div className="login-page">
+            <div className="form"> 
+                <div className="login">
+                    <div className="login-header">
+                        <h3>LOGIN</h3>
+                        <p>Please enter your credentials to login.</p>
+                    </div>
+                </div>
+                <form className="login-form" onSubmit={LoginFunction}>
+                    <input type="text" value={regNo} onChange={(e)=> setregNo(e.target.value)} placeholder="Register-no"/>
+                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="password"/>
+                    <button type="submit"> Login </button>
+                    <p className="message"><Link to="/forgot-password">Forgot Password</Link></p>
+                </form>
             </div>
-            </div>
-            <form class="login-form" onSubmit={LoginFunction}>
-            <input type="text" value={username} onChange={(e)=> setUsername(e.target.value)} placeholder="Register-no"/>
-            <input type="password" value={password} onChange={(e)=> setPassword(e.target.password)} placeholder="password"/>
-            <button type="submit">Login</button>
-            <p class="message"><a href="#">Forgot Password</a></p>
-            </form>
         </div>
-        </div>
-``
-        </form>
-        
-    )
+    );
 }
+
 export default Login_sathyabama;
