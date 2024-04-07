@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Login_sathyabama from './components/login-sathyabama/login-sathyabama';
 import Event_cse from './components/EVENT_CSE/event_cse';
+import ForgotPassword from './components/forget_password/fpassword';
 import { 
   createBrowserRouter,
   RouterProvider,
@@ -24,7 +25,12 @@ const router = createBrowserRouter([
   {
     path:'/Event_cse',
     element:<Event_cse/>,
-  }
+  },
+  {
+    path:'/forgot-password',
+    element:<ForgotPassword/>
+
+  },
 
 
 ]) 
