@@ -37,7 +37,7 @@ const Login_sathyabama = () => {
                     <input type="text" value={regNo} onChange={(e)=> setregNo(e.target.value)} placeholder="Register-no"/>
                     <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="password"/>
                     <button type="submit"> Login </button>
-                    <p className="message"><Link to="/forgot-password">Forgot Password</Link></p>
+                    <p className="message"><Link to="/forgot-password">Forgot Password</Link></p> 
                 </form>
             </div>
         </div>

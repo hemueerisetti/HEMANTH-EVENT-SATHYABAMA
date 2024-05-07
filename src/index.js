@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import Login_sathyabama from './components/login-sathyabama/login-sathyabama';
 import Event_cse from './components/EVENT_CSE/event_cse';
 import ForgotPassword from './components/forget_password/fpassword';
+import EventRegistrationForm from './components/Event_Register/Register_form';
+import EventPage from './components/Home/Home';
+
+
 import { 
   createBrowserRouter,
   RouterProvider,
@@ -19,10 +23,6 @@ const router = createBrowserRouter([
     
   },
   {
-    path:"/home",
-    element: <Event_cse/>,
-  },
-  {
     path:'/Event_cse',
     element:<Event_cse/>,
   },
@@ -31,6 +31,14 @@ const router = createBrowserRouter([
     element:<ForgotPassword/>
 
   },
+  {
+    path:'/home_register',
+    element:<EventRegistrationForm/>
+  },
+  {
+    path:'/event_home',
+    element:<EventPage/>
+  }
 
 
 ]) 
