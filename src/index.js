@@ -4,9 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Login_sathyabama from './components/login-sathyabama/login-sathyabama';
-import Event_cse from './components/EVENT_CSE/event_cse';
 import ForgotPassword from './components/forget_password/fpassword';
-import EventRegistrationForm from './components/Event_Register/Register_form';
+import EventRegistrationForm from './components/Home/Register_Event';
 import EventPage from './components/Home/Home';
 
 
@@ -23,20 +22,16 @@ const router = createBrowserRouter([
     
   },
   {
-    path:'/Event_cse',
-    element:<Event_cse/>,
-  },
-  {
     path:'/forgot-password',
     element:<ForgotPassword/>
 
   },
   {
-    path:'/home_register',
+    path:'/home-register',
     element:<EventRegistrationForm/>
   },
   {
-    path:'/event_home',
+    path:'/home-event',
     element:<EventPage/>
   }
 

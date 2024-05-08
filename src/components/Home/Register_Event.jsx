@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
-import './Register_form.css'; // Import your CSS file here
+import './Register_Event.css'; // Import your CSS file here
 import { Link } from 'react-router-dom';
 
 function EventRegistrationForm() {
