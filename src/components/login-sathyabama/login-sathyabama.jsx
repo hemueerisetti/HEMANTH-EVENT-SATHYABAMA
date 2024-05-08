@@ -13,7 +13,7 @@ const Login_sathyabama = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://databsae1.us-e2.cloudhub.io/api/post', {
+            const response = await axios.post('harshaloginsathyabama-api.us-e2.cloudhub.io/api/sendreg', {
                 regNo: regNo,
                 password: password
 
