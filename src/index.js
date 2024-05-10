@@ -7,6 +7,7 @@ import Login_sathyabama from './components/login-sathyabama/login-sathyabama';
 import ForgotPassword from './components/forget_password/fpassword';
 import EventRegistrationForm from './components/Home/Register_Event';
 import EventPage from './components/Home/Home';
+import EventPageStudent from './components/Home/Home-student';
 
 
 import { 
@@ -31,9 +32,15 @@ const router = createBrowserRouter([
     element:<EventRegistrationForm/>
   },
   {
-    path:'/home-event',
+    path:'/event-clubAdmin',
     element:<EventPage/>
+  },
+  {
+    path:'/event-student',
+    element:<EventPageStudent/>
   }
+
+
 
 
 ]) 

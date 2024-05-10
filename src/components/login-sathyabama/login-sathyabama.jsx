@@ -25,6 +25,20 @@ const Login_sathyabama = () => {
         }
     }
 
+    // Function to render the appropriate link based on the selected user type
+    const renderSubmitLink = () => {
+        switch (userType) {
+            case 'student':
+                return <Link to="/event-student"><button type="submit">Login</button></Link>;
+            case 'club-admin':
+                return <Link to="/event-clubAdmin"><button type="submit">Login</button></Link>;
+            case 'staff':
+                return <Link to="/staff-home"><button type="submit">Login</button></Link>;
+            default:
+                return <button type="submit">Login</button>;
+        }
+    }
+
     return (
         <div className="login-page">
             <div className="form"> 
@@ -38,12 +52,12 @@ const Login_sathyabama = () => {
                     <select value={userType} onChange={(e) => setUserType(e.target.value)}>
                         <option value="">Select User Type</option>
                         <option value="student">STUDENT</option>
-                        <Link to="/login"><option value="club-admin">CLUB-ADMIN</option></Link>
+                        <option value="club-admin">CLUB-ADMIN</option>
                         <option value="staff">STAFF</option>
                     </select>
                     <input type="text" value={regNo} onChange={(e)=> setRegNo(e.target.value)} placeholder="Register-no"/>
                     <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"/>
-                    <Link to="/home-event"><button type="submit">Login</button></Link>
+                    {renderSubmitLink()}
                     <p className="message"><Link to="/forgot-password">Forgot Password</Link></p> 
                 </form>
             </div>

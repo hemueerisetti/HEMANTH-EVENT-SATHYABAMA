@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const EventPage = () => {
+const EventPageStudent = () => {
   return (
     <nav className="navbar">
       <div className="navbar-menu">
@@ -41,4 +41,4 @@ const EventPage = () => {
 
 
 
-export default EventPage;
+export default EventPageStudent;
