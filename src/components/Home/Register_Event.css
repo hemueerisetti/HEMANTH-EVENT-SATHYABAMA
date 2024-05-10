@@ -1,26 +1,49 @@
+/* Use a single font for all elements */
+body {
+  font-family: Arial, sans-serif;
+}
+
 .container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 15px;
-  background-color: #fff;
+  max-width: 400px;
+  margin: 0;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+/* Adjust styles for smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(100% - 40px);
+    max-width: 100%;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    transform: translateY(0);
+  }
 }
 
 .form-wrapper {
-  max-height: 500px; /* Fixed height for scrolling */
-  overflow: auto; /* Enable scrolling */
-  padding-right: 5px; /* Decrease padding for scrollbar */
+  max-height: 500px;
+  overflow: auto;
+  padding-right: 5px;
 }
 
 .form-wrapper::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar */
+  width: 8px;
 }
 
 .form-group {
-  margin-bottom: 20px; /* Increased margin-bottom */
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center; /* Align items vertically */
 }
 
 .form-group label {
@@ -36,7 +59,7 @@
 .form-group input[type="file"] {
   flex: 2;
   width: calc(100% - 10px);
-  padding: 10px; /* Increased padding */
+  padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -45,7 +68,7 @@
 
 button[type="submit"] {
   width: 100%;
-  padding: 12px; /* Increased padding */
+  padding: 12px;
   background-color: #9e1c3f;
   color: #fff;
   border: none;
@@ -59,17 +82,17 @@ button[type="submit"]:hover {
 
 @media screen and (max-width: 768px) {
   .container {
-    padding: 10px; /* Adjust padding for smaller screens */
+    padding: 10px;
   }
   
   .form-wrapper {
-    max-height: none; /* Remove fixed height for smaller screens */
-    overflow: visible; /* Disable scrolling for smaller screens */
-    padding-right: 0; /* Remove padding for scrollbar */
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .form-group label {
-    margin-right: 0; /* Remove margin-right for smaller screens */
+    margin-right: 0;
   }
 
   .form-group input[type="text"],
@@ -78,6 +101,6 @@ button[type="submit"]:hover {
   .form-group input[type="time"],
   .form-group input[type="number"],
   .form-group input[type="file"] {
-    width: 100%; /* Make inputs full width for smaller screens */
+    width: 100%;
   }
 }
