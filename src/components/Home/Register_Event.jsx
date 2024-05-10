@@ -1,12 +1,14 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
 import './Register_Event.css'; // Import your CSS file here
-import { Link } from 'react-router-dom';
+
+
 
 function EventRegistrationForm() {
   return (
     <div className="container">
       <h2>Event Registration Form</h2>
+      <div className="form-wrapper">
       <form method="POST">
         <div className="form-group">
           <label htmlFor="fullname">Full Name:</label>
@@ -46,6 +48,7 @@ function EventRegistrationForm() {
         </div>
         <button type="submit">Register</button>
       </form>
+      </div>
     </div>
   );
 }
