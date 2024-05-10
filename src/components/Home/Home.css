@@ -1,115 +1,110 @@
-
 .navbar {
-    background-color: #9e1c3f;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
+  background-color: #9e1c3f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-  
-  .navbar-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar-menu ul li {
-    display: inline-block;
-    margin-right: 20px;
-  }
-  
-  .navbar-menu ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .navbar-search {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-search input[type="text"] {
-    padding: 5px;
-    border-radius: 3px;
-    border: none;
-    margin-right: 10px;
-  }
-  
-  .navbar-search button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
+.navbar-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .navbar-add {
-    margin-left: 400px; /* Adjust margin as needed */
-  }
-  
-  .navbar-add button {
-    background-color: #fff; /* Button background color */
-     /* Button text color */
-    border: none;
-    padding: 8px 16px; /* Adjust padding as needed */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  
-  
-  .navbar-dropdown {
-    position: relative;
-  }
-  
-  .dropdown-btn {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .dropdown-btn i {
-    margin-left: 5px; /* Adjust as needed */
-    color: #ccc; /* Adjust color as needed */
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    min-width: 120px;
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: #fff;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .navbar-dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  
-  .navbar-profile {
-    margin-right: 50px; /* Adjust margin as needed */
-    font-size: 24px; /* Adjust icon size as needed */
-    color: #fff; /* Icon color */
-    cursor: pointer;
-  }
-  
+.navbar-menu ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.navbar-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  position: relative; /* Add relative positioning */
+}
+
+.navbar-search input[type="text"] {
+  padding: 5px 30px 5px 10px; /* Adjust padding to accommodate the icon */
+  border-radius: 3px;
+  border: none;
+  margin-right: 10px;
+}
+
+.navbar-search button {
+  position: absolute; /* Position the icon absolutely */
+  right: 5px; /* Adjust the right position as needed */
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
 
 
- 
-  
+.navbar-add {
+  margin-left: auto; /* Move to the right edge */
+  margin-right: 20px; /* Add space between "Create" and dropdown */
+}
+
+.navbar-add button {
+  background-color: #fff;
+  color: #9e1c3f;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-dropdown {
+  position: relative;
+  margin-right: 20px; /* Add space between dropdown and user photo */
+}
+
+.dropdown-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dropdown-btn i {
+  margin-left: 5px;
+  color: #ccc;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 150px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar-profile {
+  margin-right: 30px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}

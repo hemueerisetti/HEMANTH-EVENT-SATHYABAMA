@@ -1,58 +1,83 @@
 .container {
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper {
+  max-height: 500px; /* Fixed height for scrolling */
+  overflow: auto; /* Enable scrolling */
+  padding-right: 5px; /* Decrease padding for scrollbar */
+}
+
+.form-wrapper::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Increased margin-bottom */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-group label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+  flex: 2;
+  width: calc(100% - 10px);
+  padding: 10px; /* Increased padding */
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px; /* Increased padding */
+  background-color: #9e1c3f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #7b1632;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px; /* Adjust padding for smaller screens */
   }
   
   .form-wrapper {
-    max-height: 500px; /* Fixed height for scrolling */
-    overflow: auto; /* Enable scrolling */
-    padding-right: 5px; /* Decrease padding for scrollbar */
+    max-height: none; /* Remove fixed height for smaller screens */
+    overflow: visible; /* Disable scrolling for smaller screens */
+    padding-right: 0; /* Remove padding for scrollbar */
   }
-  .form-wrapper::-webkit-scrollbar {
-    width: 8px; /* Set the width of the scrollbar */
-  }
-  
-  .form-group {
-    margin-bottom: 20px; /* Increased margin-bottom */
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
+
   .form-group label {
-    flex: 1;
-    margin-right: 10px;
+    margin-right: 0; /* Remove margin-right for smaller screens */
   }
-  
+
   .form-group input[type="text"],
   .form-group input[type="email"],
   .form-group input[type="date"],
   .form-group input[type="time"],
   .form-group input[type="number"],
   .form-group input[type="file"] {
-    flex: 2;
-    width: calc(100% - 10px);
-    padding: 10px; /* Increased padding */
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
+    width: 100%; /* Make inputs full width for smaller screens */
   }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 12px; /* Increased padding */
-    background-color: #9e1c3f;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #7b1632;
-  }
-  
+}

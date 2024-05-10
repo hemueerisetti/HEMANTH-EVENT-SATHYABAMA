@@ -4,7 +4,8 @@ import './login-sathyabama.css';
 import { Link } from "react-router-dom";
 
 const Login_sathyabama = () => {
-    const [regNo, setregNo] = useState('');
+    const [userType, setUserType] = useState('');
+    const [regNo, setRegNo] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [email, setEmail] = useState(null);
@@ -13,10 +14,10 @@ const Login_sathyabama = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('harshaloginsathyabama-api.us-e2.cloudhub.io/api/sendreg', {
+            const response = await axios.post('http://harshaloginsathyabama-api.us-e2.cloudhub.io/api/sendreg', {
+                userType: userType,
                 regNo: regNo,
                 password: password
-
             });
             console.log(response.data);
         } catch(error) {
@@ -34,9 +35,15 @@ const Login_sathyabama = () => {
                     </div>
                 </div>
                 <form className="login-form" onSubmit={LoginFunction}>
-                    <input type="text" value={regNo} onChange={(e)=> setregNo(e.target.value)} placeholder="Register-no"/>
-                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="password"/>
-                    <button type="submit"> Login </button>
+                    <select value={userType} onChange={(e) => setUserType(e.target.value)}>
+                        <option value="">Select User Type</option>
+                        <option value="student">STUDENT</option>
+                        <Link to="/login"><option value="club-admin">CLUB-ADMIN</option></Link>
+                        <option value="staff">STAFF</option>
+                    </select>
+                    <input type="text" value={regNo} onChange={(e)=> setRegNo(e.target.value)} placeholder="Register-no"/>
+                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"/>
+                    <Link to="/home-event"><button type="submit">Login</button></Link>
                     <p className="message"><Link to="/forgot-password">Forgot Password</Link></p> 
                 </form>
             </div>
