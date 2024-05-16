@@ -15,6 +15,7 @@ import {
   RouterProvider,
   Route
  } from 'react-router-dom';
+import LandingPage from './components/Landing_page/Landing_page';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
   {
     path:'/event-student',
     element:<EventPageStudent/>
+  },
+  {
+    path:'',
+    element:<LandingPage/>
+
   }
 
 
