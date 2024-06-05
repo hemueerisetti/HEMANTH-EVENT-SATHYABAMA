@@ -1,141 +1,118 @@
-let express=require('express')
-const mongoose = require('mongoose');
-let bodyParser = require('body-parser');
-let cors=require('cors')
-let jwt = require('jsonwebtoken');
-let{getdata,dbconnect,record,insertdata,getPosts,updateRecord}=require('./dbConn');
-const path = require('path');
-const multer = require('multer');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
+// const jwt = require('jsonwebtoken');
+// const { getdata, dbconnect, record, insertdata, getPosts, updateRecord } = require('./dbConn');
+// const path = require('path');
+// const multer = require('multer');
 
-// Define a schema
-const Schema = mongoose.Schema;
-const EventSchema = new Schema({
-  fullname: String,
-  email: String,
-  phone: String,
-  eventname: String,
-  eventdate: Date,
-  eventtime: String,
-  eventvenue: String,
-  eventcapacity: Number,
-  eventimage: String // You might want to store the path to the image in the database
-});
+// // Express app
+// const app = express();
 
-const studentSchema = new Schema({
-  username: String,
-  password: String
-});
+// // Middleware
+// app.use(express.json());
+// app.use(cors());
 
-const staffSchema = new Schema({
-  username: String,
-  password: String
-});
+// // Multer middleware for handling multipart/form-data (file upload)
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'public/uploads/'); // Define the destination folder for uploaded files
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname); // Keep the original filename
+//   }
+// });
 
-// Define models
-const StudentModel = mongoose.model('Student', studentSchema);
-const StaffModel = mongoose.model('Staff', staffSchema);
-const EventModel = mongoose.model('Event', EventSchema);
+// const upload = multer({ storage: storage });
 
-// Express app
-const app = express();
+// // Serve static files
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Middleware
-app.use(express.json());
-app.use(cors());
+// // Routes
+// app.get('/', (req, res) => {
+//   res.send('Backend is working!!');
+// });
 
-// Multer middleware for handling multipart/form-data (file upload)
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Define the destination folder for uploaded files
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); // Keep the original filename
-  }
-});
+// // Route for user login
+// app.post('/login', async (req, res) => {
+//   const { userType, regNo, password } = req.body;
 
-const upload = multer({ storage: storage });
+//   try {
+//     let user;
 
-// Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//     // Check usertype and find user in the appropriate collection
+//     if (userType === 'student') {
+//       user = await record('Student', { regNo });
+//     } else if (userType === 'staff') {
+//       user = await record('Staff', { regNo });
+//     } else {
+//       return res.status(400).json({ error: 'Invalid usertype' });
+//     }
 
-// Routes
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+//     if (!user || user.password !== password) {
+//       return res.status(401).json({ error: 'Invalid username or password' });
+//     }
 
-// Route for user login
-app.post('/login', async (req, res) => {
-  const { userType, regNo, password } = req.body;
+//     // Generate JWT token
+//     const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
 
-  try {
-    let user;
+//     res.json({ token });
+//   } catch (error) {
+//     console.error('Error while logging in:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-    // Check usertype and find user in the appropriate collection
-    if (userType === 'student') {
-      user = await record('Student', { regNo }); // Assuming 'username' is the field for student's username
-    } else if (userType === 'staff') {
-      user = await record('Staff', { regNo }); // Assuming 'username' is the field for staff's username
-    } else {
-      return res.status(400).json({ error: 'Invalid usertype' });
-    }
+// // Route for fetching event details
+// app.get('/events', async (req, res) => {
+//   try {
+//     // Call the function to fetch data from the events collection
+//     const events = await getdata('events', {});
 
-    if (!user || user.password !== password) {
-      return res.status(401).json({ error: 'Invalid username or password' });
-    }
+//     // Send the retrieved events as a response
+//     res.json(events);
+//   } catch (error) {
+//     console.error('Error while fetching events:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-    // Generate JWT token
-    const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
+// // Route for saving event data including image upload
+// app.post('/event', upload.single('eventimage'), async (req, res) => {
+//   try {
+//     // Extract data from the request body
+//     const { fullname, email, phone, eventname, eventdate, eventtime, eventvenue, eventcapacity } = req.body;
+    
+//     // Construct the path to the uploaded image
+//     const eventimage = req.file.path.replace('public', ''); // Remove 'public/' from the path
 
-    res.json({ token });
-  } catch (error) {
-    console.error('Error while logging in:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     // Data object to insert into the database
+//     const eventData = {
+//       fullname,
+//       email,
+//       phone,
+//       eventname,
+//       eventdate,
+//       eventtime,
+//       eventvenue,
+//       eventcapacity,
+//       eventimage
+//     };
 
+//     // Call insertdata function to insert event data into the database
+//     await insertdata('events', eventData);
 
-app.get('/eventcard', async (req, res) => {
-  try {
-    const events = await EventModel.find({});
-    res.json(events);
-  } catch (error) {
-    console.error('Error while fetching events:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     res.json({ message: 'Event registered successfully' });
+//   } catch (error) {
+//     console.error('Error while registering event:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-// Route to handle event registration form submission
-app.post('/event', upload.single('eventimage'), async (req, res) => {
-  try {
-    const { fullname, email, phone, eventname, eventdate, eventtime, eventvenue, eventcapacity } = req.body;
-    const eventimage = req.file.path; // Get the path to the uploaded image
-
-    // Create a new event document
-    const newEvent = new EventModel({
-      fullname,
-      email,
-      phone,
-      eventname,
-      eventdate,
-      eventtime,
-      eventvenue,
-      eventcapacity,
-      eventimage
-    });
-
-    // Save the event document to the database
-    await newEvent.save();
-
-    res.status(201).json({ message: 'Event registered successfully' });
-  } catch (error) {
-    console.error('Error while registering event:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-// Start the server
-app.listen('8000',(err)=>{
-  if(err) throw err;
-  dbconnect()
-  console.log('server started')
-})
+// // Start the server
+// app.listen(8000, (err) => {
+//   if (err) throw err;
+//   dbconnect();
+//   console.log('Server started on port 8000');
+// });

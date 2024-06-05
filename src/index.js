@@ -8,6 +8,7 @@ import ForgotPassword from './components/forget_password/fpassword';
 import EventRegistrationForm from './components/Home/Register_Event';
 import EventPage from './components/Home/Home';
 import EventPageStudent from './components/Home/Home-student';
+import EventCards from './components/event_cards/event_card';
 
 
 import { 
@@ -44,7 +45,12 @@ const router = createBrowserRouter([
     path:'',
     element:<LandingPage/>
 
+  },
+  {
+    path:'/register-event',
+    element:<EventCards/>
   }
+
 
 
 

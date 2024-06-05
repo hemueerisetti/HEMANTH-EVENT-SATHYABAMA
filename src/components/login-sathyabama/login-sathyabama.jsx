@@ -1,47 +1,46 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import './login-sathyabama.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login_sathyabama = () => {
     const [userType, setUserType] = useState('');
     const [regNo, setRegNo] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const [email, setEmail] = useState(null);
-    
+    const navigate = useNavigate();
+
     const LoginFunction = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axios.post('http://harshaloginsathyabama-api.us-e2.cloudhub.io/api/sendreg', {
-                userType: userType,
+            const response = await axios.post('http://event-sathyabama-api.us-e2.cloudhub.io/api/Credintial-Validation', {
                 regNo: regNo,
-                password: password
+                password: password,
+                userType: userType
             });
-            console.log(response.data);
-        } catch(error) {
-            console.error('Error:', error.response.data);
-        }
-    }
 
-    // Function to render the appropriate link based on the selected user type
-    const renderSubmitLink = () => {
-        switch (userType) {
-            case 'student':
-                return <Link to="/event-student"><button type="submit">Login</button></Link>;
-            case 'club-admin':
-                return <Link to="/event-clubAdmin"><button type="submit">Login</button></Link>;
-            case 'staff':
-                return <Link to="/staff-home"><button type="submit">Login</button></Link>;
-            default:
-                return <button type="submit">Login</button>;
+            console.log(response.data);
+
+            if (response.status === 200) {
+                if (userType === 'student') {
+                    navigate('/event-student');
+                } else if (userType === 'club-admin') {
+                    navigate('/event-clubAdmin');
+                } else if (userType === 'staff') {
+                    navigate('/staff');
+                }
+            } else {
+                setError('Invalid login credentials');
+            }
+        } catch (error) {
+            setError(error.response ? error.response.data.message : 'An error occurred');
+            console.error('Error:', error.response ? error.response.data : error.message);
         }
-    }
+    };
 
     return (
         <div className="login-page">
-            <div className="form"> 
+            <div className="form">
                 <div className="login">
                     <div className="login-header">
                         <h3>LOGIN</h3>
@@ -55,9 +54,10 @@ const Login_sathyabama = () => {
                         <option value="club-admin">CLUB-ADMIN</option>
                         <option value="staff">STAFF</option>
                     </select>
-                    <input type="text" value={regNo} onChange={(e)=> setRegNo(e.target.value)} placeholder="Register-no"/>
-                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"/>
-                    {renderSubmitLink()}
+                    <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)} placeholder="Register No"/>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+                    <button type="submit">Login</button>
+                    {error && <p className="error">{error}</p>}
                     <p className="message"><Link to="/forgot-password">Forgot Password</Link></p> 
                 </form>
             </div>
