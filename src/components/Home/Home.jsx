@@ -3,12 +3,11 @@ import './Home.css'; // Import your CSS file hereimport React from 'react';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
-
-
+import EventCards from '../event_cards/event_card';
 
 const EventPage = () => {
   return (
+    <>
     <nav className="navbar">
       <div className="navbar-menu">
         <ul>
@@ -39,9 +38,9 @@ const EventPage = () => {
         <i className="fas fa-user-circle"></i>
       </div>
     </nav>
+    <EventCards></EventCards>
+    </>
   );
 }
-
-
 
 export default EventPage;
