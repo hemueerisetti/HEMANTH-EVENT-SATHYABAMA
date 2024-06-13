@@ -1,26 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body {
-  font-family: 'Roboto', sans-serif; /* Changed font family to Roboto */
-  background-color: #9e1c3f;
-  display: flex;
-  font-size: 14px;
-  outline: 0;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.container {
-  width: 300px;
-  padding:40px; /* Adjusted padding */
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.fp-container {
+  background: white;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 5%;
+  max-width: 300px;
+  width: 100%;
 }
 
 .forgot-password-form h2 {
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -28,28 +16,31 @@ body {
   margin-bottom: 20px;
 }
 
-.form-group {
+.fp-form-group {
   margin-bottom: 15px;
-}
-#email {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f2f2f2; /* Light grey background color */
+  text-align: left; /* Align the content of the form group to the left */
 }
 
-
-.form-group label {
+.fp-form-group label {
   display: block;
   font-weight: bold;
+  margin-bottom: 5px; /* Add some space between the label and the input */
 }
 
-.form-group input {
+#email {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+#RegNO {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
 }
 
 button[type="submit"] {

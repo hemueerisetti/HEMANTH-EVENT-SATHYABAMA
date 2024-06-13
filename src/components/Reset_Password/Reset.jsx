@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './forget.css'; // Import your CSS file here
+import './Reset.css'; // Import your CSS file here
 import { Link } from 'react-router-dom';
 
-const styles1 = {
+const styles5 = {
   body: {
     fontFamily: "'Roboto', sans-serif", 
     // backgroundColor: '#9e1c3f',
@@ -16,8 +16,8 @@ const styles1 = {
   }
 };
 
-const ForgotPassword = () => {
-  const fpImageStyle = {
+const ResetPassword = () => {
+  const reImageStyle = {
     backgroundImage: "url('https://t3.ftcdn.net/jpg/04/39/18/98/360_F_439189843_VPDNfusFZXHFXD8KWPDlaFbUfYcHBcwW.jpg')",
     backgroundSize: 'cover', // Cover the whole area
     backgroundPosition: 'center', // Center the image
@@ -26,18 +26,19 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div style={fpImageStyle}>
-    <div style={styles1.body}>
-    <div class="fp-container">
-  <form class="forgot-password-form">
-    <h2>Forgot Password</h2>
-    <div class="fp-form-group">
-    <label for="RegNO">Regestration No *</label>
+    <div style={reImageStyle}>
+    <div style={styles5.body}>
+    <div class="re-container">
+  <form class="reset-password-form">
+    <h2>Reset Password</h2>
+    <div class="re-form-group">
 
-  <input type="integer" id="RegNO" name="RegNO" placeholder="Reg No." required/> <br/><br/>
-      <label for="email">E-mail ID *</label>
+      <label for="NewPW">New Password *</label>
 
-    <input type="email" id="email" name="email" placeholder="E-mail ID" required/>
+    <input type="password" id="NewPW" name="NewPW" placeholder="Enter New Password" required/><br/><br/>
+    <label for="CnfPW">Confirm Password *</label>
+
+    <input type="password" id="CnfPW" name="CnfPW" placeholder="Confirm  Password" required/>
     
     </div>
     <button type="submit">RESET PASSWORD</button>
@@ -55,4 +56,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

@@ -3,7 +3,33 @@ import axios from 'axios';
 import './login-sathyabama.css';
 import { Link, useNavigate } from "react-router-dom";
 
+
+
+
+const styles2 = {
+    body: {
+      fontFamily: "'Roboto', sans-serif", 
+    //   backgroundColor: '#9e1c3f',
+      display: 'flex',
+      fontSize: '14px',
+      outline: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+    }
+  };
+
+
 const Login_sathyabama = () => {
+
+    const loginImageStyle = {
+        backgroundImage: "url('https://www.sathyabama.ac.in/sites/default/files/inline-images/DJI_0105-New-Low.jpg')",
+        backgroundSize: 'cover', // Cover the whole area
+        backgroundPosition: 'center', // Center the image
+        height: '100vh', // Full height
+        width: '100vw', // Full width
+      };
+
     const [userType, setUserType] = useState('');
     const [regNo, setRegNo] = useState('');
     const [password, setPassword] = useState('');
@@ -39,6 +65,8 @@ const Login_sathyabama = () => {
     };
 
     return (
+    <div style={loginImageStyle}>
+    <div style={styles2.body}>
         <div className="login-page">
             <div className="form">
                 <div className="login">
@@ -62,6 +90,8 @@ const Login_sathyabama = () => {
                 </form>
             </div>
         </div>
+    </div>
+    </div>
     );
 }
 

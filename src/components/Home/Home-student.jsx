@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom';
 
 
 
-
 const EventPageStudent = () => {
   return (
-    <nav className="navbar">
+    <><nav className="navbar">
       <div className="navbar-menu">
         <ul>
           <li><a href="#">Home</a></li>
@@ -35,7 +34,11 @@ const EventPageStudent = () => {
       <div className="navbar-profile">
         <i className="fas fa-user-circle"></i>
       </div>
-    </nav>
+    </nav><div className="Ongoing">
+        <h2>Ongoing Events</h2>
+      </div><div className="Upcoming">
+        <h2>Upcoming Events</h2>
+      </div></>
   );
 }
 

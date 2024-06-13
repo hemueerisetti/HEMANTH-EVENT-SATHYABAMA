@@ -1,4 +1,13 @@
-/* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
+/* body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #831238;
+  background-image: linear-gradient(45deg, #831238, #831238);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
 
 header .header {
   background-color: #fff;
@@ -12,8 +21,12 @@ header a img {
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
+  /* padding: 8% 0 0; */  
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ensure it takes the full height of the viewport */
 }
 
 .login-page .form .login {
@@ -26,7 +39,7 @@ header a img {
   z-index: 1;
   background: white;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0 auto;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -75,15 +88,7 @@ header a img {
 
 .container {
   position: relative;
-  z-index: 1;
+  /* z-index: 1; */
   max-width: 300px;
   margin: 0 auto;
-}
-
-body {
-  background-color: #831238;
-  background-image: linear-gradient(45deg, #831238, #831238);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

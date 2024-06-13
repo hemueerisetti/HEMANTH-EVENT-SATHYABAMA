@@ -9,6 +9,8 @@ import EventRegistrationForm from './components/Home/Register_Event';
 import EventPage from './components/Home/Home';
 import EventPageStudent from './components/Home/Home-student';
 import EventCards from './components/event_cards/event_card';
+import UpdatePassword from './components/Update_Password/Update';
+import ResetPassword from './components/Reset_Password/Reset';
 
 
 import { 
@@ -49,6 +51,16 @@ const router = createBrowserRouter([
   {
     path:'/register-event',
     element:<EventCards/>
+  },
+  {
+    path:'/update-password',
+    element:<UpdatePassword/>
+
+  },
+  {
+    path:'/reset-password',
+    element:<ResetPassword/>
+
   }
 
 
@@ -66,5 +78,6 @@ root.render(
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// or send to an analytics endpoint. Learn more: 
+
 reportWebVitals();

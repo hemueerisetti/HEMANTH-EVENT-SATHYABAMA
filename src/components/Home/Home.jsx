@@ -5,9 +5,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import EventCards from '../event_cards/event_card';
 
+const styles = {
+  body: {
+    backgroundColor: '#fff',
+    color: '#000',
+  }
+};
+
 const EventPage = () => {
   return (
-    <>
+    <div style={styles.body}>
     <nav className="navbar">
       <div className="navbar-menu">
         <ul>
@@ -39,7 +46,7 @@ const EventPage = () => {
       </div>
     </nav>
     <EventCards></EventCards>
-    </>
+    </div>
   );
 }
 

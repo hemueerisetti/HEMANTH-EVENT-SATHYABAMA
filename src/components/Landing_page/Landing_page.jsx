@@ -5,7 +5,7 @@ import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/fr
 import { Link } from "react-router-dom";
 
 const Header = styled.header`
-  padding: 15px 30px;
+  padding: 15px 0px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -21,6 +21,7 @@ const Header = styled.header`
 `;
 
 const Logo = styled.img`
+  padding: 0px 15px;
   max-width: 150px;
 `;
 
@@ -28,7 +29,7 @@ const Nav = styled.nav`
   flex: 1;
   display: flex;
   justify-content: flex-end;
-
+  
   ul {
     list-style-type: none;
     padding: 0;
@@ -40,16 +41,26 @@ const Nav = styled.nav`
 
   ul li {
     margin: 0 10px;
+    
   }
 
   ul li a {
     color: white;
     font-weight: bold;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 6px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+  ul li RegisterButton {
+    color: #831238;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 6px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
 
   ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
@@ -58,10 +69,11 @@ const Nav = styled.nav`
 `;
 
 const RegisterButton = styled(Link)`
-  background-color: white;
+  
   color: #9e1c3f;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 8px;
+  
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -69,10 +81,12 @@ const RegisterButton = styled(Link)`
     background-color: #f0f0f0;
     color: #9e1c3f;
   }
+
+  
 `;
 
 const Main = styled.main`
-  margin-top: 100px;
+  // margin-top: 700px;
   padding: 20px;
 `;
 
