@@ -1,66 +1,78 @@
+/* Update.css */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
 .up-container {
-    background: white;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    border-radius: 5%;
-    max-width: 300px;
-    width: 100%;
-  }
-  
-  .update-password-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .update-password-form p {
-    margin-bottom: 20px;
-  }
-  
-  .up-form-group {
-    margin-bottom: 15px;
-    text-align: left; /* Align the content of the form group to the left */
-  }
-  
-  .up-form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px; /* Add some space between the label and the input */
-  }
-  
-  #CurrPW {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-  }
-  
-  #NewPW {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-  }
-  #CnfPW {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #831238;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #6b0f2e;
-  }
-  
+  background: white;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 5%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.update-password-form h2 {
+  margin-bottom: 20px;
+}
+
+.update-password-form p {
+  margin-bottom: 20px;
+}
+
+.up-form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Align the content of the form group to the left */
+}
+
+.up-form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px; /* Add some space between the label and the input */
+}
+
+#userType,
+#regNo,
+#NewPW,
+#CnfPW {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Add some space between the inputs */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #831238;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #6b0f2e;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+  font-size: 14px;
+}

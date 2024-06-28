@@ -6,6 +6,8 @@ import EventRegistrationForm from './components/Home/Register_Event';
 import EventPage from './components/Home/Home';
 import LandingPage from './components/Landing_page/Landing_page';
 import EventCards from './components/event_cards/event_card';
+import ResetPassword from './components/Reset_Password/Reset';
+import UpdatePassword from './components/Update_Password/Update';
 function App() {
   return (
     <div>
@@ -15,6 +17,8 @@ function App() {
       <EventPage/>
       <LandingPage/>
       <EventCards/>
+      <ResetPassword/>
+      <UpdatePassword/>
       
       
      

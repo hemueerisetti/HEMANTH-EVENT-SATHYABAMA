@@ -1,59 +1,96 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Reset.css'; // Import your CSS file here
-import { Link } from 'react-router-dom';
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import './Reset.css'; // Import your CSS file here
+// import { Link, useNavigate } from 'react-router-dom';
 
-const styles5 = {
-  body: {
-    fontFamily: "'Roboto', sans-serif", 
-    // backgroundColor: '#9e1c3f',
-    display: 'flex',
-    fontSize: '14px',
-    outline: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-  }
-};
+// const styles5 = {
+//   body: {
+//     fontFamily: "'Roboto', sans-serif",
+//     display: 'flex',
+//     fontSize: '14px',
+//     outline: 0,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     height: '100vh',
+//   }
+// };
 
-const ResetPassword = () => {
-  const reImageStyle = {
-    backgroundImage: "url('https://t3.ftcdn.net/jpg/04/39/18/98/360_F_439189843_VPDNfusFZXHFXD8KWPDlaFbUfYcHBcwW.jpg')",
-    backgroundSize: 'cover', // Cover the whole area
-    backgroundPosition: 'center', // Center the image
-    height: '100vh', // Full height
-    width: '100vw', // Full width
-  };
+// const ResetPassword = () => {
+//   const [email, setEmail] = useState('');
+//   const [regNo, setRegNo] = useState('');
+//   const [error, setError] = useState(null);
+//   const [success, setSuccess] = useState(null);
+//   const navigate = useNavigate();
 
-  return (
-    <div style={reImageStyle}>
-    <div style={styles5.body}>
-    <div class="re-container">
-  <form class="reset-password-form">
-    <h2>Reset Password</h2>
-    <div class="re-form-group">
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
 
-      <label for="NewPW">New Password *</label>
+//     try {
+//       const response = await axios.post('http://event-sathyabama-api.us-e2.cloudhub.io/api/Reset-password', {
+//         email: email,
+//         regNo: regNo
+//       });
 
-    <input type="password" id="NewPW" name="NewPW" placeholder="Enter New Password" required/><br/><br/>
-    <label for="CnfPW">Confirm Password *</label>
+//       if (response.status === 200) {
+//         setSuccess("Password reset link generated successfully");
+//         setError(null); // clear previous errors if any
+//         // Redirect or navigate to a different route
+//         navigate('/update-password'); // replace with your desired route
+//       } else {
+//         setError('Invalid credentials'); // handle other error cases if needed
+//         setSuccess(null); // clear success message if any
+//       }
+//     } catch (error) {
+//       setError(error.response ? error.response.data.message : 'An error occurred');
+//       console.error('Error:', error.response ? error.response.data : error.message);
+//       setSuccess(null); // clear success message if any
+//     }
+//   };
 
-    <input type="password" id="CnfPW" name="CnfPW" placeholder="Confirm  Password" required/>
-    
-    </div>
-    <button type="submit">RESET PASSWORD</button>
-  </form>
-</div>
-</div>
-</div>
+//   const reImageStyle = {
+//     backgroundImage: "url('https://t3.ftcdn.net/jpg/04/39/18/98/360_F_439189843_VPDNfusFZXHFXD8KWPDlaFbUfYcHBcwW.jpg')",
+//     backgroundSize: 'cover',
+//     backgroundPosition: 'center',
+//     height: '100vh',
+//     width: '100vw',
+//   };
 
+//   return (
+//     <div style={reImageStyle}>
+//       <div style={styles5.body}>
+//         <div className="re-container">
+//           <form className="reset-password-form" onSubmit={handleSubmit}>
+//             <h2>Reset Password</h2>
+//             <div className="re-form-group">
+//               <label htmlFor="email">Email *</label>
+//               <input
+//                 type="email"
+//                 id="email"
+//                 name="email"
+//                 placeholder="Enter Email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 required
+//               /><br/><br/>
+//               <label htmlFor="regNo">RegNo *</label>
+//               <input
+//                 type="text"
+//                 id="regNo"
+//                 name="regNo"
+//                 placeholder="Enter RegNo"
+//                 value={regNo}
+//                 onChange={(e) => setRegNo(e.target.value)}
+//                 required
+//               />
+//             </div>
+//             {error && <p className="error">{error}</p>}
+//             {success && <p className="success">{success}</p>}
+//             <button type="submit">RESET PASSWORD</button>
+//           </form>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
-
-
-
-
-    
-  );
-};
-
-export default ResetPassword;
+// export default ResetPassword;
