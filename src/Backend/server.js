@@ -34,35 +34,35 @@ app.get('/', (req, res) => {
   res.send('Backend is working!!');
 });
 
-// // Route for user login
-// app.post('/login', async (req, res) => {
-//   const { userType, regNo, password } = req.body;
+// Route for user login
+app.post('/login', async (req, res) => {
+  const { userType, regNo, password } = req.body;
 
-//   try {
-//     let user;
+  try {
+    let user;
 
-//     // Check usertype and find user in the appropriate collection
-//     if (userType === 'student') {
-//       user = await record('Student', { regNo });
-//     } else if (userType === 'staff') {
-//       user = await record('Staff', { regNo });
-//     } else {
-//       return res.status(400).json({ error: 'Invalid usertype' });
-//     }
+    // Check usertype and find user in the appropriate collection
+    if (userType === 'student') {
+      user = await record('Student', { regNo });
+    } else if (userType === 'staff') {
+      user = await record('Staff', { regNo });
+    } else {
+      return res.status(400).json({ error: 'Invalid usertype' });
+    }
 
-//     if (!user || user.password !== password) {
-//       return res.status(401).json({ error: 'Invalid username or password' });
-//     }
+    if (!user || user.password !== password) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
 
-//     // Generate JWT token
-//     const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
+    // Generate JWT token
+    const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
 
-//     res.json({ token });
-//   } catch (error) {
-//     console.error('Error while logging in:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
+    res.json({ token });
+  } catch (error) {
+    console.error('Error while logging in:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 // Route for fetching event details
 app.get('/events', async (req, res) => {

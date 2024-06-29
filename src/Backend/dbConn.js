@@ -1,9 +1,9 @@
 const { MongoClient} = require('mongodb');
 
 let db; 
-const url = 'mongodb://alumni:alumni@ac-plr61ft-shard-00-00.wqjmazy.mongodb.net:27017,ac-plr61ft-shard-00-01.wqjmazy.mongodb.net:27017,ac-plr61ft-shard-00-02.wqjmazy.mongodb.net:27017/?ssl=true&replicaSet=atlas-73oxf6-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0';
+const url = 'mongodb://username:YZyh79RS1IHvcywl@sis-event-cluster-shard-00-00.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-01.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-02.k2v9b.mongodb.net:27017/lCse-User-Details?replicaSet=atlas-7mh5z3-shard-0&ssl=true&authSource=admin';
 
-const dbName = 'test';
+const dbName = 'User';
 
 // Function to connect to MongoDB
 async function dbconnect() {
@@ -19,41 +19,41 @@ async function dbconnect() {
 
 
 // Function to fetch data from a collection based on a query
-async function getdata(collname, query) {
-    try {
-        const output = await db.collection(collname).find(query).toArray();
-        return output
-    } catch (err) {
-        console.error('Error fetching data:', err);
-        throw new Error('Error fetching data from the database.');
-    }
-}
+// async function getdata(collname, query) {
+//     try {
+//         const output = await db.collection(collname).find(query).toArray();
+//         return output
+//     } catch (err) {
+//         console.error('Error fetching data:', err);
+//         throw new Error('Error fetching data from the database.');
+//     }
+// }
 
-async function getPosts(collname) {
-    try {
-        const output = await db.collection(collname).find().sort({ createdAt: -1 }).limit(10).toArray();
-        return output
+// async function getPosts(collname) {
+//     try {
+//         const output = await db.collection(collname).find().sort({ createdAt: -1 }).limit(10).toArray();
+//         return output
         
-    } catch (err) {
-        console.error('Error fetching data:', err);
-        throw new Error('Error fetching data from the database.');
-    }
-}
+//     } catch (err) {
+//         console.error('Error fetching data:', err);
+//         throw new Error('Error fetching data from the database.');
+//     }
+// }
 
 
-// Function to find a single record in a collection based on a query
-async function record(collname, query) {
-    try {
-        const output = await db.collection(collname).findOne(query);
-        if (!output) {
-            throw new Error('User not found. Please provide valid details.');
-        }
-        return output;
-    } catch (err) {
-        console.error('Error finding record:', err);
-        throw new Error('User not found. Please provide valid details.');
-    }
-}
+// // Function to find a single record in a collection based on a query
+// async function record(collname, query) {
+//     try {
+//         const output = await db.collection(collname).findOne(query);
+//         if (!output) {
+//             throw new Error('User not found. Please provide valid details.');
+//         }
+//         return output;
+//     } catch (err) {
+//         console.error('Error finding record:', err);
+//         throw new Error('User not found. Please provide valid details.');
+//     }
+// }
 
 // Function to insert data into a collection
 async function insertdata(colname, data) {
