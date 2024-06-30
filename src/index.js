@@ -12,6 +12,8 @@ import EventCards from "./components/event_cards/event_card";
 import UpdatePassword from "./components/Update_Password/Update";
 import ResetPassword from "./components/Reset_Password/Reset";
 import UserProfile from "./components/user-profile/user-profile";
+import AuthProvider from "./components/auth/auth";
+import ProtectedRoute from "./components/auth/protected";
 
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import LandingPage from "./components/Landing_page/Landing_page";
@@ -26,48 +28,74 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   },
   {
-    path: "/reg",
-    element: <EventRegistrationForm />,
-  },
-  {
-    path: "/event-clubAdmin",
-    element: <EventPage />,
-  },
-  {
-    path: "/event-student",
-    element: <EventPageStudent />,
-  },
-  {
     path: "/",
     element: <LandingPage />,
   },
   {
     path: "/register-event",
-    element: <EventCards />,
+    element: (
+      <ProtectedRoute>
+        <EventCards />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/update-password",
-    element: <UpdatePassword />,
+    element: (
+      <ProtectedRoute>
+        <UpdatePassword />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/reset-password",
-    element: <ResetPassword />,
+    element: (
+      <ProtectedRoute>
+        <ResetPassword />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/user-profile",
-    element: <UserProfile />,
+    element: (
+      <ProtectedRoute>
+        <UserProfile />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/reg",
+    element: (
+      <ProtectedRoute>
+        <EventRegistrationForm />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/event-clubAdmin",
+    element: (
+      <ProtectedRoute>
+        <EventPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/event-student",
+    element: (
+      <ProtectedRoute>
+        <EventPageStudent />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider isSignedIn={true}>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more:
 
 reportWebVitals();

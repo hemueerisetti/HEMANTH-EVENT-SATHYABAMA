@@ -3,6 +3,7 @@ import './Home.css'; // Import your CSS file hereimport React from 'react';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import EventCardsStudent from '../event_cards_student/event_card';
 
 
 
@@ -36,6 +37,7 @@ const EventPageStudent = () => {
       </div>
     </nav><div className="Ongoing">
         <h2>Ongoing Events</h2>
+        <EventCardsStudent/>
       </div><div className="Upcoming">
         <h2>Upcoming Events</h2>
       </div></>
