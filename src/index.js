@@ -11,6 +11,7 @@ import EventPageStudent from './components/Home/Home-student';
 import EventCards from './components/event_cards/event_card';
 import UpdatePassword from './components/Update_Password/Update';
 import ResetPassword from './components/Reset_Password/Reset';
+import UserProfile from './components/user-profile/user-profile';
 
 
 import { 
@@ -61,6 +62,9 @@ const router = createBrowserRouter([
     path:'/reset-password',
     element:<ResetPassword/>
 
+  },{
+    path:'/user-profile',
+    element:<UserProfile/>
   }
 
 

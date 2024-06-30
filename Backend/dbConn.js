@@ -1,59 +1,61 @@
-const { MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 
 let db; 
 const url = 'mongodb://username:YZyh79RS1IHvcywl@sis-event-cluster-shard-00-00.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-01.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-02.k2v9b.mongodb.net:27017/lCse-User-Details?replicaSet=atlas-7mh5z3-shard-0&ssl=true&authSource=admin';
 
-const dbName = 'User';
+const dbName = 'lCse-User-Details';
 
 // Function to connect to MongoDB
 async function dbconnect() {
     try {
         const client = await MongoClient.connect(url);
         console.log('Connected to MongoDB');
-        db = client.db(dbName); // Set the reference to the database
+        db = client.db(dbName);
+         // Set the reference to the database
     } catch (err) {
         console.error('Connection error:', err);
         throw new Error('Internal Server Error. Please try again later.'); // Throw an error to be handled by the caller
     }
 }
 
-
 // Function to fetch data from a collection based on a query
-// async function getdata(collname, query) {
-//     try {
-//         const output = await db.collection(collname).find(query).toArray();
-//         return output
-//     } catch (err) {
-//         console.error('Error fetching data:', err);
-//         throw new Error('Error fetching data from the database.');
-//     }
-// }
+async function getdata(collname, query) {
+    try {
+        const output = await db.collection(collname).find(query).toArray();
+        return { collname, output };
+    } catch (err) {
+        console.error('Error fetching data:', err);
+        throw new Error('Error fetching data from the database.');
+    }
+}
 
-// async function getPosts(collname) {
-//     try {
-//         const output = await db.collection(collname).find().sort({ createdAt: -1 }).limit(10).toArray();
-//         return output
-        
-//     } catch (err) {
-//         console.error('Error fetching data:', err);
-//         throw new Error('Error fetching data from the database.');
-//     }
-// }
-
-
-// // Function to find a single record in a collection based on a query
+// Function to find a single record in a collection based on a query
 // async function record(collname, query) {
 //     try {
-//         const output = await db.collection(collname).findOne(query);
+//         const output = await db.collection(collname).find(query);
 //         if (!output) {
 //             throw new Error('User not found. Please provide valid details.');
 //         }
-//         return output;
+//         return collname;
 //     } catch (err) {
 //         console.error('Error finding record:', err);
 //         throw new Error('User not found. Please provide valid details.');
 //     }
 // }
+
+async function record(collname, query) {
+    try {
+        const output = await db.collection(collname).findOne(query); // Use findOne to get a single document
+        if (!output) {
+            throw new Error('User not found. Please provide valid details.');
+        }
+        return output; // Return the retrieved document
+    } catch (err) {
+        console.error('Error finding record:', err);
+        throw new Error('User not found. Please provide valid details.');
+    }
+}
+
 
 // Function to insert data into a collection
 async function insertdata(colname, data) {
@@ -80,12 +82,10 @@ async function updateRecord(collname, filter, update) {
     }
 }
 
-
 module.exports = {
     dbconnect,
     getdata,
     record,
     insertdata,
-    getPosts,
     updateRecord
 };

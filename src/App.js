@@ -8,6 +8,8 @@ import LandingPage from './components/Landing_page/Landing_page';
 import EventCards from './components/event_cards/event_card';
 import ResetPassword from './components/Reset_Password/Reset';
 import UpdatePassword from './components/Update_Password/Update';
+import UserProfile from './components/user-profile/user-profile';
+
 function App() {
   return (
     <div>
@@ -19,6 +21,7 @@ function App() {
       <EventCards/>
       <ResetPassword/>
       <UpdatePassword/>
+      <UserProfile/>
       
       
      

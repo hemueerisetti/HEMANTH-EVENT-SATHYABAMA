@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const { getdata, dbconnect, record, insertdata, getPosts, updateRecord } = require('./dbConn');
+const { getdata, dbconnect, record, insertdata, updateRecord } = require('./dbConn');
 const path = require('path');
 const multer = require('multer');
 
@@ -31,30 +31,34 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('Backend is working!!');
+  res.send('Backend is working!das');
 });
 
 // Route for user login
 app.post('/login', async (req, res) => {
   const { userType, regNo, password } = req.body;
+  console.log({userType,regNo,password});
+  console.log(userType)
 
   try {
     let user;
 
     // Check usertype and find user in the appropriate collection
     if (userType === 'student') {
-      user = await record('Student', { regNo });
-    } else if (userType === 'staff') {
-      user = await record('Staff', { regNo });
+      user = await record('Student', {"regNo": regNo} );
+    } else if (userType === 'club-admin') {
+      user = await record('club-admin', { regNo });
     } else {
       return res.status(400).json({ error: 'Invalid usertype' });
     }
 
+    console.log(user)
+
     if (!user || user.password !== password) {
-      return res.status(401).json({ error: 'Invalid username or password' });
+      return res.status(400).json({ error: 'Invalid username or password' });
     }
 
-    // Generate JWT token
+
     const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
 
     res.json({ token });
@@ -109,6 +113,19 @@ app.post('/event', upload.single('eventimage'), async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+// const { dbconnect, getUserData } = require('./dbConn');
+
+// app.get('/users/:userId', async (req, res) => {
+//   const { userId } = req.params;
+//   try {
+//     const userData = await getUserData(userId);
+//     res.json(userData);
+//   } catch (error) {
+//     console.error('Error fetching user data:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 // Start the server
 app.listen(8000, (err) => {
