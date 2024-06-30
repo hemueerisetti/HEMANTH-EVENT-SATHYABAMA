@@ -82,10 +82,21 @@ async function updateRecord(collname, filter, update) {
     }
 }
 
+// Function to create a new collection
+async function createCollection(collname, options = {}) {
+    try {
+        await db.createCollection(collname, options);
+    } catch (err) {
+        console.error('Error creating collection:', err);
+        throw new Error('Failed to create collection. Please try again.');
+    }
+}
+
 module.exports = {
     dbconnect,
     getdata,
     record,
     insertdata,
-    updateRecord
+    updateRecord,
+    createCollection
 };

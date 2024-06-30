@@ -42,13 +42,43 @@
   margin: 10px 15px;
   color: #666;
 }
-.event-card a {
-  font-size: 1em;
-  margin: 10px 15px;
-  color: #666;
+/* Add this to event_card.css */
+
+.apply-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 15px;
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  text-align: center;
   text-decoration: none;
-  background-color: skyblue;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.apply-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.apply-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add a custom focus outline */
+}
+
+.apply-button:disabled {
+  background-color: #6c757d; /* Grey background color */
+  cursor: not-allowed;
+}
+
+.apply-button:hover:not(:disabled) {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 1200px) {
