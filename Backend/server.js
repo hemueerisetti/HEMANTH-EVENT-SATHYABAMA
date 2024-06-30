@@ -19,7 +19,7 @@ app.use(cors());
 // Multer middleware for handling multipart/form-data (file upload)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/uploads/'); // Define the destination folder for uploaded files
+    cb(null, path.join(__dirname, '../public/uploads/')); // Adjust the path to the correct folder
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname); // Keep the original filename
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 // Routes
 app.get('/', (req, res) => {
@@ -55,7 +55,6 @@ app.post('/login', async (req, res) => {
     if (!user || user.password !== password) {
       return res.status(400).json({ error: 'Invalid username or password' });
     }
-
 
     const token = jwt.sign({ regNo, userType }, sec, { expiresIn: '1h' });
 
@@ -87,7 +86,7 @@ app.post('/event', upload.single('eventimage'), async (req, res) => {
     const { fullname, email, phone, eventname, eventdate, eventtime, eventvenue, eventcapacity } = req.body;
     
     // Construct the path to the uploaded image
-    const eventimage = req.file.path.replace('public', ''); // Remove 'public/' from the path
+    const eventimage = `\\uploads\\${req.file.filename}`; // Create the path in the desired format
 
     // Data object to insert into the database
     const eventData = {

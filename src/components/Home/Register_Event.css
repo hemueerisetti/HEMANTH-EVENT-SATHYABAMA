@@ -1,106 +1,62 @@
-/* Use a single font for all elements */
-/* body {
-  font-family: Arial, sans-serif;
-} */
-
 .Reg-container {
-  max-width: 350px;
-  margin: 0;
-  margin-right: 25px;
+  background-color: #fff;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-}
-
-/* Adjust styles for smaller screens */
-@media screen and (max-width: 768px) {
-  .Reg-container {
-    width: calc(100% - 40px);
-    max-width: 100%;
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    transform: translateY(0);
-  }
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
 }
 
 .Reg-form-wrapper {
-  max-height: 500px;
-  overflow: auto;
-  padding-right: 5px;
-}
-
-.Reg-form-wrapper::-webkit-scrollbar {
-  width: 8px;
+  margin-top: 20px;
 }
 
 .Reg-form-group {
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center; /* Align items vertically */
+  margin-bottom: 15px;
 }
 
 .Reg-form-group label {
-  flex: 1;
-  margin-right: 10px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.Reg-form-group input[type="text"],
-.Reg-form-group input[type="email"],
-.Reg-form-group input[type="date"],
-.Reg-form-group input[type="time"],
-.Reg-form-group input[type="number"],
-.Reg-form-group input[type="file"] {
-  flex: 2;
-  width: calc(100% - 10px);
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-}
-
-button[type="submit"] {
+.Reg-form-group input {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
   background-color: #9e1c3f;
   color: #fff;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
-  background-color: #7b1632;
+button:hover {
+  background-color: #d71a5d;
 }
 
-@media screen and (max-width: 768px) {
-  .Reg-container {
-    padding: 10px;
-  }
-  
-  .Reg-form-wrapper {
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
-  }
+.success-message {
+  color: #4caf50; /* Green color for success message */
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
+}
 
-  .Reg-form-group label {
-    margin-right: 0;
-  }
+.error-message {
+  color: #f44336; /* Red color for error message */
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
+}
 
-  .Reg-form-group input[type="text"],
-  .Reg-form-group input[type="email"],
-  .Reg-form-group input[type="date"],
-  .Reg-form-group input[type="time"],
-  .Reg-form-group input[type="number"],
-  .Reg-form-group input[type="file"] {
-    width: 100%;
-  }
+.message {
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
 }
