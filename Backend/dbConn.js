@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
 
 let db; 
-const url = 'mongodb://username:YZyh79RS1IHvcywl@sis-event-cluster-shard-00-00.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-01.k2v9b.mongodb.net:27017,sis-event-cluster-shard-00-02.k2v9b.mongodb.net:27017/lCse-User-Details?replicaSet=atlas-7mh5z3-shard-0&ssl=true&authSource=admin';
+const url = 'mongodb://alumni:alumni@ac-plr61ft-shard-00-00.wqjmazy.mongodb.net:27017,ac-plr61ft-shard-00-01.wqjmazy.mongodb.net:27017,ac-plr61ft-shard-00-02.wqjmazy.mongodb.net:27017/?replicaSet=atlas-73oxf6-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority&appName=Cluster0';
 
-const dbName = 'lCse-User-Details';
+const dbName = 'test';
 
 // Function to connect to MongoDB
 async function dbconnect() {
@@ -22,7 +22,7 @@ async function dbconnect() {
 async function getdata(collname, query) {
     try {
         const output = await db.collection(collname).find(query).toArray();
-        return { collname, output };
+        return output
     } catch (err) {
         console.error('Error fetching data:', err);
         throw new Error('Error fetching data from the database.');

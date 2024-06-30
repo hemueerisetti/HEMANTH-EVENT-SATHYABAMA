@@ -29,7 +29,7 @@ const EventPage = () => {
         <button><i className="fas fa-search"></i></button>
       </div>
       <div className="navbar-add">
-      <Link to="/home-register">
+      <Link to="/registration">
           <button>Create +</button>
           </Link>
       </div>

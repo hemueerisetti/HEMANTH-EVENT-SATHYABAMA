@@ -7,6 +7,8 @@ const { getdata, dbconnect, record, insertdata, updateRecord } = require('./dbCo
 const path = require('path');
 const multer = require('multer');
 
+const sec = "874b8y76r2u";
+
 // Express app
 const app = express();
 
@@ -37,8 +39,6 @@ app.get('/', (req, res) => {
 // Route for user login
 app.post('/login', async (req, res) => {
   const { userType, regNo, password } = req.body;
-  console.log({userType,regNo,password});
-  console.log(userType)
 
   try {
     let user;
@@ -47,19 +47,17 @@ app.post('/login', async (req, res) => {
     if (userType === 'student') {
       user = await record('Student', {"regNo": regNo} );
     } else if (userType === 'club-admin') {
-      user = await record('club-admin', { regNo });
+      user = await record('clubadmin', {"regNo": regNo});
     } else {
       return res.status(400).json({ error: 'Invalid usertype' });
     }
-
-    console.log(user)
 
     if (!user || user.password !== password) {
       return res.status(400).json({ error: 'Invalid username or password' });
     }
 
 
-    const token = jwt.sign({ regNo, userType }, 'your-secret-key', { expiresIn: '1h' });
+    const token = jwt.sign({ regNo, userType }, sec, { expiresIn: '1h' });
 
     res.json({ token });
   } catch (error) {

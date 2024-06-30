@@ -33,7 +33,7 @@ const router = createBrowserRouter([
 
   },
   {
-    path:'/ ',
+    path:'/registration ',
     element:<EventRegistrationForm/>
   },
   {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element:<EventPageStudent/>
   },
   {
-    path:'',
+    path:'/',
     element:<LandingPage/>
 
   },
