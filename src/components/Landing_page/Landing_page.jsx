@@ -86,7 +86,7 @@ const RegisterButton = styled(Link)`
 `;
 
 const Main = styled.main`
-  // margin-top: 700px;
+  margin-top: 700px;
   padding: 20px;
 `;
 
