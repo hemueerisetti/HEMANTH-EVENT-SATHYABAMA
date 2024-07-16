@@ -31,7 +31,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://event-sathyabama-api.us-e2.cloudhub.io/api/Forgot-password', {
+      const response = await axios.post('http://event-sathyabama-api1.us-e2.cloudhub.io/api/Forgot-password', {
         email: email,
         regNo: regNo
       });
