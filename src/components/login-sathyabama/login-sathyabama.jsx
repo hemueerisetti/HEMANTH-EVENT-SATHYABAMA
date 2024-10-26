@@ -33,7 +33,7 @@ const Login_sathyabama = () => {
   const LoginFunction = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/login', {
+      const response = await axios.post('http://event-sathyabama.us-e2.cloudhub.io/api/Register-User', {
         userType,
         regNo,
         password,
