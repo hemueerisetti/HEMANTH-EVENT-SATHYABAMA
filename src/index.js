@@ -7,7 +7,7 @@ import Login_sathyabama from "./components/login-sathyabama/login-sathyabama";
 import ForgotPassword from "./components/forget_password/fpassword";
 import EventRegistrationForm from "./components/Home/Register_Event";
 import EventPage from "./components/Home/Home";
-import EventPageStudent from "./components/Home/Home-student";
+//import EventPageStudent from "./components/Home/Home-student";
 import EventCards from "./components/event_cards/event_card";
 import UpdatePassword from "./components/Update_Password/Update";
 import ResetPassword from "./components/Reset_Password/Reset";
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
     path: "/event-student",
     element: (
       <ProtectedRoute>
-        <EventPageStudent />
+        <EventPage/>
       </ProtectedRoute>
     ),
   },

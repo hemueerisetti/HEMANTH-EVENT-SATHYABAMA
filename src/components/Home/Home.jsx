@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css"; // Import your CSS file here
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Link } from "react-router-dom";
-import EventCards from "../event_cards/event_card";
+//import EventCards from "../event_cards/event_card";
 
 const styles = {
   body: {
@@ -58,7 +58,6 @@ const EventPage = () => {
           </div>
         </nav>
       </div>
-      <EventCards></EventCards>
     </>
   );
 };

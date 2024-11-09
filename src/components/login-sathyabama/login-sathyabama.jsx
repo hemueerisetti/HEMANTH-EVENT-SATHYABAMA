@@ -33,19 +33,14 @@ const Login_sathyabama = () => {
   const LoginFunction = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://event-sathyabama.us-e2.cloudhub.io/api/Register-User', {
+      const response = await axios.post('http://localhost:8000/validate', {
         userType,
         regNo,
         password,
       });
       console.log("success");
       console.log(response.data);
-
-
-
       if (response.status === 200) {
-        const token = response.data.token;
-        localStorage.setItem('token', token);
         console.log("completed")
 
         if (userType === 'student') {
