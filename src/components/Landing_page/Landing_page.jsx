@@ -231,11 +231,11 @@ function LandingPage() {
         <Logo src="https://www.sathyabama.ac.in/themes/custom/sathyabama/logo.svg" alt="Logo" />
         <Nav>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Workshops</a></li>
-            <li><a href="#">Seminars</a></li>
-            <li><a href="#">Events</a></li>
-            <li><RegisterButton to="/login">Register</RegisterButton></li>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">WORKSHOPS</a></li>
+            <li><a href="#">SEMINARS</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><RegisterButton to="/login">LOGIN</RegisterButton></li>
           </ul>
         </Nav>
       </Header>

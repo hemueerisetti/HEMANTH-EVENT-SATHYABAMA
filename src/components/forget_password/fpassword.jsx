@@ -12,7 +12,7 @@ const styles1 = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-  }
+  },
 };
 
 const fpImageStyle = {

@@ -52,6 +52,7 @@ const Login_sathyabama = () => {
         }
       } else {
         setError('Invalid login credentials');
+        console.log(response.data);
       }
     } catch (error) {
       setError(error.response ? error.response.data.message : 'An error occurred');

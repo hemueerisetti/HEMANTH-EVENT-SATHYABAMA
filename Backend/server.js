@@ -43,11 +43,11 @@ app.post('/validate', async (req, res) => {
 
       // Fetch user based on userType
     if (userType === 'student') {
-        user = await db.collection('student').findOne({ regNo}); // Corrected to db.collection
+        user = await db.collection('student').findOne({  userType,regNo,password } ); // Corrected to db.collection
     } else if (userType === 'club-admin') {
-        user = await db.collection('club-admin').findOne({ regNo }); // Corrected to db.collection
+        user = await db.collection('club-admin').findOne({ userType, regNo, password } ); // Corrected to db.collection
     } else if (userType === 'staff') {
-        user = await db.collection('staff').findOne({ regNo }); // Corrected to db.collection
+        user = await db.collection('staff').findOne({ userType, regNo, password } ); // Corrected to db.collection
     } else {
         return res.status(400).json({ message: "INVALID USERTYPE!!" });
     }
@@ -57,9 +57,6 @@ app.post('/validate', async (req, res) => {
     if (!user) {
         return res.status(401).json({ message: 'INVALID CREDENTIALS!!' });
     }
-     
-
-      // You may want to include password checking logic here if needed
     res.status(200).json({ message: 'LOGIN SUCCESSFUL!!' });
     console.log(res.status);
   } catch (error) {
@@ -69,11 +66,8 @@ app.post('/validate', async (req, res) => {
 });
 
 
-
-// Start the server
 app.listen(8000, async(err) => {
   if (err) throw err;
-  await dbconnect();
-  console.log("hello");
+  await dbconnect(); 
   console.log('Server started on port 8000');
 });
