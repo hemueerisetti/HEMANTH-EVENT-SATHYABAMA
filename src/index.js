@@ -6,17 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import Login_sathyabama from "./components/login-sathyabama/login-sathyabama";
 import ForgotPassword from "./components/forget_password/fpassword";
 import EventRegistrationForm from "./components/Home/Register_Event";
-import EventPage from "./components/Home/Home";
-//import EventPageStudent from "./components/Home/Home-student";
+import EventPage_Clubadmin from "./Pages/Club-Admin_page/club-admin_page";
+import EventPage_Student from "./Pages/Student_page/student_page";
 import EventCards from "./components/event_cards/event_card";
 import UpdatePassword from "./components/Update_Password/Update";
 import ResetPassword from "./components/Reset_Password/Reset";
 import UserProfile from "./components/user-profile/user-profile";
 import AuthProvider from "./components/auth/auth";
 import ProtectedRoute from "./components/auth/protected";
-
+import EventPage_Staff from "./Pages/Staff_page/staff_page";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import LandingPage from "./components/Landing_page/Landing_page";
+
 
 const router = createBrowserRouter([
   {
@@ -75,7 +76,7 @@ const router = createBrowserRouter([
     path: "/event-clubAdmin",
     element: (
       <ProtectedRoute>
-        <EventPage />
+        <EventPage_Clubadmin />
       </ProtectedRoute>
     ),
   },
@@ -83,10 +84,14 @@ const router = createBrowserRouter([
     path: "/event-student",
     element: (
       <ProtectedRoute>
-        <EventPage/>
+        <EventPage_Student/>
       </ProtectedRoute>
     ),
   },
+  {
+    path:"/event-staff",
+    element:<EventPage_Staff/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

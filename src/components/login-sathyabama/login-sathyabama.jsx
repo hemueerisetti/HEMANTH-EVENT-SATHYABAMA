@@ -12,7 +12,7 @@ const styles2 = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-  }
+  } 
 };
 
 const Login_sathyabama = () => {
@@ -48,7 +48,7 @@ const Login_sathyabama = () => {
         } else if (userType === 'club-admin') {
           navigate('/event-clubAdmin');
         } else if (userType === 'staff') {
-          navigate('/staff');
+          navigate('/event-staff');
         }
       } else {
         setError('Invalid login credentials');

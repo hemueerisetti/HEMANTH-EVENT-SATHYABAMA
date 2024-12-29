@@ -1,9 +1,9 @@
 import React from 'react';
-import './home-student.css'; // Import your CSS file here
 import '@fortawesome/fontawesome-free/css/all.css';
-import EventCardsStudent from '../event_cards_student/event_card';
+import "./student_page.css"
 
-const EventPageStudent = () => {
+
+const EventPage_Student = () => {
   return (
     <>
       <nav className="navbar">
@@ -35,16 +35,9 @@ const EventPageStudent = () => {
         </div>
       </nav>
       <div className="content"> {/* Add the content class here */}
-        <div className="Ongoing">
-          <h2>Ongoing Events</h2>
-          <EventCardsStudent />
-        </div>
-        <div className="Upcoming">
-          <h2>Upcoming Events</h2>
-        </div>
       </div>
     </>
   );
 }
 
-export default EventPageStudent;
+export default EventPage_Student;

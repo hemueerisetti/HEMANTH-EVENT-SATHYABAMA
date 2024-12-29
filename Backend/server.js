@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
+ 
 
 //DECALRE APP 
 
@@ -11,14 +12,15 @@ app.use(cors());
 // CONNECT TO MONGODB
 let db; 
 const url = 'mongodb://localhost:27017/';
-const dbName ='event-sathyabama'; 
+const dbName ='sathyabama_Event'; 
 
 
 // Function to connect to MongoDB
 async function dbconnect() {
     try {
         const client = await MongoClient.connect(url).then(
-            console.log("MONGODB IS CONNECTED")
+            console.log("MONGODB IS CONNECTED"),
+            console.log(url)
         );
         
         db = client.db(dbName);
@@ -29,45 +31,40 @@ async function dbconnect() {
     }
 
 }
-
-
 app.post('/validate', async (req, res) => {
-  const { userType, regNo, password } = req.body;
+    const { userType, regNo, password } = req.body;
+    console.log(req.body);
+    
   
-
-  try {
-      // Check if all fields are provided
-    if (!userType || !regNo || !password) {
-        return res.status(400).json({ message: "ALL FIELDS ARE REQUIRED" });
+    try {
+      if (!userType || !regNo || !password) {
+          return res.status(400).json({ message: "ALL FIELDS ARE REQUIRED" });
+          
+      }
+      if (userType === 'student') {
+          user = await db.collection('student').findOne({  userType,regNo,password } ); // Corrected to db.collection
+      } else if (userType === 'club-admin') {
+          user = await db.collection('club-admin').findOne({ userType, regNo, password } ); // Corrected to db.collection
+      } else if (userType === 'staff') {
+          user = await db.collection('staff').findOne({ userType, regNo, password } ); // Corrected to db.collection
+      } else {
+          return res.status(400).json({ message: "INVALID USERTYPE!!" });
+      }
+      console.log(user);
+      if (!user) {
+          return res.status(401).json({ message: 'INVALID CREDENTIALS!!' });
+      }
+      res.status(200).json({ message: 'LOGIN SUCCESSFUL!!' });
+      console.log(res.status);
+    } catch (error) {
+        console.log('error', error);
+        res.status(500).json({ message: 'INTERNAL SERVER ERROR', error: error.message });
     }
-
-      // Fetch user based on userType
-    if (userType === 'student') {
-        user = await db.collection('student').findOne({  userType,regNo,password } ); // Corrected to db.collection
-    } else if (userType === 'club-admin') {
-        user = await db.collection('club-admin').findOne({ userType, regNo, password } ); // Corrected to db.collection
-    } else if (userType === 'staff') {
-        user = await db.collection('staff').findOne({ userType, regNo, password } ); // Corrected to db.collection
-    } else {
-        return res.status(400).json({ message: "INVALID USERTYPE!!" });
-    }
-    console.log(user);
-      
-      // If user is not found
-    if (!user) {
-        return res.status(401).json({ message: 'INVALID CREDENTIALS!!' });
-    }
-    res.status(200).json({ message: 'LOGIN SUCCESSFUL!!' });
-    console.log(res.status);
-  } catch (error) {
-      console.log('error', error);
-      res.status(500).json({ message: 'INTERNAL SERVER ERROR', error: error.message });
-  }
-});
-
+  });    
 
 app.listen(8000, async(err) => {
   if (err) throw err;
   await dbconnect(); 
   console.log('Server started on port 8000');
 });
+
