@@ -8,7 +8,7 @@ import ForgotPassword from "./components/forget_password/fpassword";
 import EventRegistrationForm from "./components/Home/Register_Event";
 import EventPage_Clubadmin from "./Pages/Club-Admin_page/club-admin_page";
 import EventPage_Student from "./Pages/Student_page/student_page";
-import EventCards from "./components/event_cards/event_card";
+import EventCard from "./Pages/Register_Event_page/register_event_page";
 import UpdatePassword from "./components/Update_Password/Update";
 import ResetPassword from "./components/Reset_Password/Reset";
 import UserProfile from "./components/user-profile/user-profile";
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     path: "/register-event",
     element: (
       <ProtectedRoute>
-        <EventCards />
+        <EventCard />
       </ProtectedRoute>
     ),
   },

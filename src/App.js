@@ -4,7 +4,7 @@ import Login_sathyabama from './components/login-sathyabama/login-sathyabama';
 import ForgotPassword from './components/forget_password/fpassword';
 import EventRegistrationForm from './components/Home/Register_Event';
 import LandingPage from './components/Landing_page/Landing_page';
-import EventCards from './components/event_cards/event_card';
+import EventCard from './Pages/Register_Event_page/register_event_page';
 import ResetPassword from './components/Reset_Password/Reset';
 import UpdatePassword from './components/Update_Password/Update';
 import UserProfile from './components/user-profile/user-profile';
@@ -22,7 +22,7 @@ function App() {
       <EventPage_Clubadmin/>
       <EventPage_Staff/>
       <LandingPage/>
-      <EventCards/>
+      <EventCard/>
       <ResetPassword/>
       <UpdatePassword/>
       <UserProfile/>

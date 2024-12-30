@@ -26,7 +26,7 @@ function EventRegistrationForm() {
     eventtime: '',
     eventvenue: '',
     eventcapacity: '',
-    eventimage: null
+    eventimage: null,
   });
 
   const [message, setMessage] = useState('');
@@ -36,12 +36,12 @@ function EventRegistrationForm() {
     if (e.target.name === 'eventimage') {
       setFormData({
         ...formData,
-        [e.target.name]: e.target.files[0]
+        [e.target.name]: e.target.files[0], // Handle file input
       });
     } else {
       setFormData({
         ...formData,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value, // Handle text input
       });
     }
   };
@@ -51,20 +51,17 @@ function EventRegistrationForm() {
     try {
       const formDataToSend = new FormData();
       for (const key in formData) {
-        formDataToSend.append(key, formData[key]);
+        formDataToSend.append(key, formData[key]); // Append all form data including the file
       }
-      const response = await axios.post('http://localhost:8000/event', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+
+      const response = await axios.post('http://localhost:8000/events', formDataToSend);
 
       // Show success message and redirect to home page
       setMessage(response.data.message);
       console.log('Response from server:', response.data);
       setTimeout(() => {
         navigate('/'); // Redirect to the home page
-      }, 10000); // Redirect after 2 seconds
+      }, 2000); // Redirect after 2 seconds
     } catch (error) {
       console.error('Error while sending data:', error);
       // Show error message if the registration fails
